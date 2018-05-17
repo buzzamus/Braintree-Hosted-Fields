@@ -1,0 +1,15 @@
+.center {
+  text-align: center;
+}
+
+.form-container {
+  text-align: center;
+  margin-left: 50%;
+  background-color: #34d2f9;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, serif, sans-serif;
+}
