@@ -12,6 +12,15 @@ class CheckoutsController < ApplicationController
         submit_for_settlement: true
       }
     )
+    if @result.success?
+      redirect_to checkout_path(@result.transaction.id)
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @transaction = gateway.transaction.find(params[:id])
   end
 
   def gateway

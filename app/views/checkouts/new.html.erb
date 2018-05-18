@@ -1,4 +1,4 @@
-<h1>Complete Your Order<h1>
+<h1 class="center">Complete Your Order<h1>
   <div class="form-container">
     <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
       <label for="card-number">Card Number</label>
@@ -10,9 +10,12 @@
       <label for="expiration-date">Expiration Date</label>
       <div id="expiration-date"></div>
 
+      <label for="postal-code">Postal Code</label>
+      <div id="postal-code"></div>
+
       <input type="hidden" id="nonce" name="payment_method_nonce" />
 
-      <input type="submit" value="Submit Order" disabled />
+      <input type="submit" value="Submit Order" class="submit-btn" disabled />
 
     <% end %>
   </div>
@@ -63,6 +66,10 @@
             expirationDate: {
               selector: '#expiration-date',
               placeholder: '10/2019'
+            },
+            postalCode: {
+              selector: '#postal-code',
+              placeholder: '62346'
             }
           }
         }, function (hostedFieldsErr, hostedFieldsInstance) {
