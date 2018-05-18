@@ -1,6 +1,9 @@
 <h1 class="center">transaction <%= @transaction.id %></h1>
 
 <div class="center">
-  <h3><%= @transaction.amount %></h3>
-  <h3><%= @transaction.status %></h3>
+  <h3>Amount: $<%= @transaction.amount %></h3>
+  <h3>Status: <%= @transaction.status %></h3>
+  <h3>Card Type: <%= @transaction.credit_card_details.card_type %></h3>
+  <h3>Last 4: <%= @transaction.credit_card_details.last_4 %></h3>
+  <h3>Bin: <%= @transaction.credit_card_details.bin %></h3>
 </div>

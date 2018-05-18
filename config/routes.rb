@@ -2,5 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#home'
   get 'pages/home', to: 'pages#home'
-  resources :checkouts
+  resources :checkouts, only: [:new, :create, :show]
+  resources :subscriptions, only: [:new, :create, :show]
 end
