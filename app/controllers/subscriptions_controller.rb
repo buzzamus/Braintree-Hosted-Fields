@@ -34,8 +34,7 @@ class SubscriptionsController < ApplicationController
       environment: :sandbox,
       merchant_id: ENV["MERCHANT_ID"],
       public_key: ENV["PUBLIC_KEY"],
-      private_key: ENV["PRIVATE_KEY"],
+      private_key: ENV["PRIVATE_KEY"]
     )
   end
-
 end
