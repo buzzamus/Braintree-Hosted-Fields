@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  before_action :gateway
 
   def new
     @client_token = gateway.client_token.generate
@@ -27,14 +28,5 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscription = gateway.subscription.find(params[:id])
-  end
-
-  def gateway
-    @gateway = Braintree::Gateway.new(
-      environment: :sandbox,
-      merchant_id: ENV["MERCHANT_ID"],
-      public_key: ENV["PUBLIC_KEY"],
-      private_key: ENV["PRIVATE_KEY"]
-    )
   end
 end
