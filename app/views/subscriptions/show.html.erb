@@ -5,4 +5,17 @@
   <h3>Date Customer First Billed: <%= @subscription.first_billing_date %></h3>
   <h3>Balance: <%= @subscription.balance %></h3>
   <h3>Token: <%= @subscription.payment_method_token %></h3>
+  <hr/>
+
+  <div class="center">
+    <h2>Subscription History</h2>
+    <% @subscription.transactions.each do |i| %>
+      <p>Bill Date: <%= i.created_at %></p>
+      <p>Response: <%= i.status %></p>
+      <p>Price: <%= i.amount %></p>
+      <p>--------------------------------------------------</p>
+
+    <% end %>
+
+  </div>
 </div>
