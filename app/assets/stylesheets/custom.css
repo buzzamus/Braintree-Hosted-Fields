@@ -50,3 +50,11 @@ p, h1, h2, h3, h4, h5, h6 {
 .submit-btn:hover {
   background-color: #db5c5c;
 }
+
+.customer-input {
+  width: 100%;
+  height: 30px;
+  font-size: 1.1em;
+  background-color: #34d2f9;
+  border: 1px solid black;
+}

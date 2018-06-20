@@ -1,6 +1,17 @@
 <h1 class="center">Create Your Subscription<h1>
   <div class="form-container">
     <%= form_tag("/subscriptions", method: "post", id: "payment-form") do %>
+      <div>
+        <label for="first-name">First Name</label>
+        <p><input class="customer-input" name="first_name" /></p>
+
+        <label for="last-name">Last Name</label>
+        <p><input class="customer-input" name="last_name" /></p>
+
+        <label for="email">Email</label>
+        <p><input class="customer-input" name="email" /></p>
+      </div>
+
       <label for="card-number">Card Number</label>
       <div id="card-number"></div>
 

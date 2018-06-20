@@ -8,8 +8,9 @@ class SubscriptionsController < ApplicationController
 
   def create
     @customer = gateway.customer.create(
-      first_name: "John",
-      last_name: "#{rand(0..2000)}",
+      first_name: params["first_name"],
+      last_name: params["last_name"],
+      email: params["email"],
       payment_method_nonce: params["payment_method_nonce"]
     )
     if @customer.success?
