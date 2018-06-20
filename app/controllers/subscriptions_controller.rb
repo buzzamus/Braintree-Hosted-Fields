@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :gateway
+  @error_message = " "
 
   def new
     @client_token = gateway.client_token.generate
@@ -19,6 +20,7 @@ class SubscriptionsController < ApplicationController
       if @result.success?
         redirect_to subscription_path(@result.subscription.id)
       else
+        @error_message = "your transaction did not go through"
         render 'new'
       end
     else
