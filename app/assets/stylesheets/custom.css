@@ -45,6 +45,7 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: #e84747;
   width: 100px;
   height: 40px;
+  margin-top: 10px;
 }
 
 .submit-btn:hover {
