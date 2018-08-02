@@ -1,3 +1,11 @@
-<h1><%= @customer.first_name %> <%= @customer.last_name %></h1>
+<h1 class="center"><%= @customer.first_name %> <%= @customer.last_name %></h1>
 
-<p>Customer ID: <%= @customer.id %></p>
+<div class="center">
+  <p>Customer ID: <%= @customer.id %></p>
+  <h4>Payment information</h4>
+  <% @customer.credit_cards.each do |card| %>
+    <p>Payment Method Token: <%= link_to card.token, card_path(card.token) %></p>
+    <p>Card Type: <%= card.card_type %></p>
+    <p>Last 4: <%= card.last_4 %></p>
+  <% end %>
+</div>

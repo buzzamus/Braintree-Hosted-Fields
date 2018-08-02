@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :checkouts, only: [:new, :create, :show]
   resources :subscriptions, only: [:index, :new, :create, :show]
   resources :customers, only: [:index, :show]
+  resources :cards, only: [:index, :show]
 end

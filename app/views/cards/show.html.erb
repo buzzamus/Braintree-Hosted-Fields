@@ -1,0 +1,12 @@
+<h1 class="center">Payment Method Token: <%= @card.token %></h1>
+
+<div class="center">
+
+  <h3>Payment Method's Subscription's: </h3>
+  <p>Card Type: <%= @card.card_type %></p>
+  <p>Last 4: <%= @card.last_4 %></p>
+  <h3>Subscriptions Tied To Payment Method:</h3>
+  <% @card.subscriptions.each do |subscription| %>
+    <p><%= link_to subscription.id, subscription_path(subscription.id) %><p>
+  <% end %>
+</div>
