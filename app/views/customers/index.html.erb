@@ -1,0 +1,8 @@
+<h1 class="center">All Customers</h1>
+
+<div class="center">
+  <% @customers.each do |customer| %>
+    <h3><%= link_to customer.id, customer_path(customer.id) %></h3>
+    <p><%= customer.first_name %> <%= customer.last_name %></p>
+  <% end %>
+</div>
