@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/home', to: 'pages#home'
   resources :checkouts, only: [:new, :create, :show]
-  resources :subscriptions, only: [:new, :create, :show]
+  resources :subscriptions, only: [:index, :new, :create, :show]
 end

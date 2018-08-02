@@ -1,0 +1,8 @@
+<h1 class="center">All Subscriptions</h1>
+
+<div class="center">
+  <% @subscriptions.each do |subscription| %>
+    <h3><%= link_to subscription.id, subscription_path(subscription.id) %></h3>
+
+  <% end %>
+</div>

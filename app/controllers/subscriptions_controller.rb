@@ -2,6 +2,18 @@ class SubscriptionsController < ApplicationController
   before_action :gateway
   @error_message = " "
 
+  def index
+    @subscriptions = gateway.subscription.search do |search|
+    search.status.in(
+      Braintree::Subscription::Status::Active,
+      Braintree::Subscription::Status::Canceled,
+      Braintree::Subscription::Status::Expired,
+      Braintree::Subscription::Status::PastDue,
+      Braintree::Subscription::Status::Pending
+    )
+    end
+  end
+
   def new
     @client_token = gateway.client_token.generate
   end
