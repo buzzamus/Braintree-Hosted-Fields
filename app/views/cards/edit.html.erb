@@ -1,0 +1,97 @@
+<h1>Edit Payment Method Token <%= @card.token %></h1>
+
+<h3><%= @error_message %></h3>
+
+<h4 class="center"><%= @error_message %></h4>
+<div class="form-container">
+  <%= form_for(card_path(@card.token), method: "puts", id: "update-form") do %>
+    <label for="card-number">Card Number</label>
+    <div id="card-number"></div>
+
+    <label for="cvv">CVV</label>
+    <div id="cvv"></div>
+
+    <label for="expiration-date">Expiration Date</label>
+    <div id="expiration-date"></div>
+
+    <label for="postal-code">Postal Code</label>
+    <div id="postal-code"></div>
+
+    <input type="hidden" id="nonce" name="payment_method_nonce" />
+
+    <input type="submit" value="Update" class="submit-btn" disabled />
+
+  <% end %>
+</div>
+
+<script>
+  var form = document.querySelector('#update-form');
+  var submit = document.querySelector('input[type="submit"]');
+  var client_token = "<%= @client_token %>"
+
+  braintree.client.create({
+    authorization: client_token
+  }, function (clientErr, clientInstance) {
+    if (clientErr) {
+      console.error(clientErr);
+      return;
+    }
+
+    // PayPal or Data Collector components here.
+
+    braintree.hostedFields.create({
+      client: clientInstance,
+      styles: {
+        'input': {
+          'font-size': '18px',
+          'padding': '10px'
+        },
+        'input.invalid': {
+          'color': 'red'
+        },
+        'input.valid': {
+          'color': 'green'
+        }
+      },
+      fields: {
+        number: {
+          selector: '#card-number',
+          placeholder: '4111 1111 1111 1111'
+        },
+        cvv: {
+          selector: '#cvv',
+          placeholder: '123'
+        },
+        expirationDate: {
+          selector: '#expiration-date',
+          placeholder: '10/2019'
+        },
+        postalCode: {
+          selector: '#postal-code',
+          placeholder: '62346'
+        }
+      }
+    }, function (hostedFieldsErr, hostedFieldsInstance) {
+      if (hostedFieldsErr) {
+        console.error(hostedFieldsErr);
+        return;
+      }
+
+      submit.removeAttribute('disabled');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+          if (tokenizeErr) {
+            console.error(tokenizeErr);
+            return;
+          }
+
+          document.querySelector('#nonce').value = payload.nonce;
+          form.submit();
+        });
+      }, false);
+    });
+  });
+</script>

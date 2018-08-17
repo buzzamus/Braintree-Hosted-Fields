@@ -1,6 +1,6 @@
 <h1 class="center">Complete Your Order</h1>
 
-  <h4 class="center"><%= @error_message %></h4>
+  <h4 class="center error-text"><%= @error_message %></h4>
   <div class="form-container">
     <%= form_tag("/checkouts", method: "post", id: "payment-form") do %>
       <label for="card-number">Card Number</label>
